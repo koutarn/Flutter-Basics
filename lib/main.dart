@@ -47,17 +47,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         width: double.infinity,
+        color: Colors.yellow,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Image.network(
-            //   "http://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg"
-            // ),
-            Image.asset("./images/easy-logo-900px.gif"),
-            Icon(
-              Icons.abc,
+            Text(
+              'asdf',
+              style: TextStyle(
+                fontSize: 100,
+                color: Colors.purpleAccent,
+                fontWeight: FontWeight.w900,
+                fontStyle: FontStyle.italic,
+                decoration: TextDecoration.underline,
+              ),
             ),
+            Text('qwer'),
             RaisedButton(
               child: Text('次へ'),
               onPressed: (){
