@@ -45,19 +45,31 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child:RaisedButton(
-          child: Text('次へ'),
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>NextPage(paramText: "任意の文字列")));
-          },
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Image.network(
+            //   "http://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg"
+            // ),
+            Image.asset("./images/easy-logo-900px.gif"),
+            Icon(
+              Icons.abc,
+            ),
+            RaisedButton(
+              child: Text('次へ'),
+              onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>NextPage("good owl")),
+                );
+              },
+            ),
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

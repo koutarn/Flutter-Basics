@@ -7,7 +7,7 @@ class NextPage extends StatelessWidget {
   final String paramText;
 
   // 以下を実装、コンストラクタで値を受領
-  NextPage({Key? key, required this.paramText}) : super(key: key);
+  NextPage(this.paramText);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,12 @@ class NextPage extends StatelessWidget {
         title: Text('NextPage'),
         centerTitle: true,
       ),
-      body: Text(paramText), // ここで受領した値を表示
+      body:Column(
+          children: [
+            Image.network("http://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg"),
+            Text(paramText),
+          ],
+        ),
     );
   }
 }
