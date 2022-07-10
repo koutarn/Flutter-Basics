@@ -39,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final items = List<String>.generate(10000, (i) => "Item $i");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,32 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         width: double.infinity,
-        color: Colors.yellow,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'asdf',
-              style: TextStyle(
-                fontSize: 100,
-                color: Colors.purpleAccent,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            Text('qwer'),
-            RaisedButton(
-              child: Text('次へ'),
-              onPressed: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context)=>NextPage("good owl")),
-                );
-              },
-            ),
-          ],
+        child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder:(context,index){
+              return ListTile(
+                title: Text('${items[index]}'),
+              );
+            }
         ),
       ),
     );
