@@ -1,8 +1,27 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import './NextPage.dart';
+import 'package:english_words/english_words.dart';
 
 void main() {
   runApp(const MyApp());
+}
+
+class RandomWords extends StatefulWidget {
+  const RandomWords({Key? key}) : super(key:key);
+
+  @override
+  State<RandomWords> createState() => _RandomWordsState();
+}
+
+class _RandomWordsState extends State<RandomWords> {
+  final _suggestions = <WordPair>[];
+  final _biggerFont = const TextStyle(fontSize: 18);
+  @override
+  Widget build(BuildContext context){
+    final wordPair = WordPair.random();
+    return Text(wordPair.asSnakeCase);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -11,51 +30,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  final items = List<String>.generate(10000, (i) => "Item $i");
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Container(
-        width: double.infinity,
-        child: ListView.builder(
-            itemCount: items.length,
-            itemBuilder:(context,index){
-              return ListTile(
-                title: Text('${items[index]}'),
-              );
-            }
+      title: 'Welcome to Flutter',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Welcome to Flutter'),
+        ),
+        body: const Center(
+          child: RandomWords(),
         ),
       ),
     );
